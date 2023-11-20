@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    tools:parentTag="androidx.appcompat.widget.LinearLayoutCompat"
+    android:layout_height="wrap_content">
+
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/plotView"
+        style="@style/APDefacto.Light"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:paddingTop="0dp"
+        app:backgroundColor="@color/white"
+        app:borderColor="@color/white"
+        app:graphBackgroundColor="@color/white"
+        app:lineLabelAlignBottom="right"
+        app:lineLabelInsetBottom="6dp"
+        app:lineLabelRotationBottom="-25"
+        app:lineLabelTextSizeBottom="10sp"
+        app:lineLabelTextSizeLeft="12sp"
+        app:lineLabels="left|bottom"
+        app:marginBottom="8dp"
+        app:marginLeft="0dp"
+        app:marginTop="0dp"
+        app:paddingLeft="0dp"
+        app:paddingTop="0dp"
+        app:renderMode="use_background_thread" />
+
+</merge>
