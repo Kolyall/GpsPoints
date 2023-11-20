@@ -21,11 +21,16 @@
         app:lineLabelTextSizeBottom="10sp"
         app:lineLabelTextSizeLeft="12sp"
         app:lineLabels="left|bottom"
-        app:marginBottom="8dp"
         app:marginLeft="0dp"
         app:marginTop="0dp"
         app:paddingLeft="0dp"
         app:paddingTop="0dp"
         app:renderMode="use_background_thread" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/page_results__btn_submit"/>
 
 </merge>

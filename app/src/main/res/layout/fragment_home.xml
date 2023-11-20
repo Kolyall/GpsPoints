@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".home.HomeFragment">
 
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/description"
+        android:text="@string/page_home__description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
@@ -15,7 +22,7 @@
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/description">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText"

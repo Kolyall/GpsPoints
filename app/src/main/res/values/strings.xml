@@ -3,4 +3,6 @@
     <string name="page_home__btn_submit">Поехали</string>
     <string name="page_home__edit_hint">Введите количество координат</string>
     <string name="dlg_error__title">Error</string>
+    <string name="page_home__description">Запрашивает у сервера определённое количество координат точек (x, y), а затем отображает полученный ответ в виде таблицы и графика.</string>
+    <string name="page_results__btn_submit">Печать</string>
 </resources>
