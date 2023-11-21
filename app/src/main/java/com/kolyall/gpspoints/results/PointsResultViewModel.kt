@@ -34,13 +34,17 @@ class PointsResultViewModel @Inject constructor(
                 }
                 _uiState.value = UiState.Display(
                     pointsUiList = pointUiModels.map {
-                        PointsAdapterItem.PointItem(it) as PointsAdapterItem
+                        PointsAdapterItem.PointItem(
+                            id = it.xText,
+                            point = it
+                        ) as PointsAdapterItem
                     }
                         .toMutableList()
                         .apply {
                             add(
                                 PointsAdapterItem.Chart(
-                                    ChartView.ChartUiModel(
+                                    id = points.id,
+                                    chartUiModel = ChartView.ChartUiModel(
                                         points.list.map {
                                             it.toChartPointUiModel()
                                         }

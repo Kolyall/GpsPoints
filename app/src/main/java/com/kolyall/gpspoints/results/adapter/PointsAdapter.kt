@@ -9,13 +9,19 @@ import com.kolyall.gpspoints.results.views.point.PointUiModel
 import com.kolyall.gpspoints.results.views.point.PointView
 
 sealed interface PointsAdapterItem {
-    data class PointItem(val point: PointUiModel) : PointsAdapterItem
-    data class Chart(val chartUiModel: ChartView.ChartUiModel) : PointsAdapterItem
+    data class PointItem(val point: PointUiModel, val id: String) : PointsAdapterItem
+    data class Chart(val chartUiModel: ChartView.ChartUiModel, val id: String) : PointsAdapterItem
 }
 
-class MyDiffUtil : DiffUtil.ItemCallback<PointsAdapterItem>() {
+class PointsAdapterItemDiffUtil : DiffUtil.ItemCallback<PointsAdapterItem>() {
     override fun areItemsTheSame(oldItem: PointsAdapterItem, newItem: PointsAdapterItem): Boolean {
-        return oldItem == newItem
+        return if (newItem is PointsAdapterItem.Chart && oldItem is PointsAdapterItem.Chart) {
+            newItem.id == oldItem.id
+        } else if (newItem is PointsAdapterItem.PointItem && oldItem is PointsAdapterItem.PointItem) {
+            newItem.id == oldItem.id
+        } else {
+            false
+        }
     }
 
     override fun areContentsTheSame(
@@ -23,9 +29,10 @@ class MyDiffUtil : DiffUtil.ItemCallback<PointsAdapterItem>() {
         newItem: PointsAdapterItem
     ): Boolean {
         return if (newItem is PointsAdapterItem.Chart && oldItem is PointsAdapterItem.Chart) {
-            false
+            newItem.chartUiModel.data == oldItem.chartUiModel.data
         } else if (newItem is PointsAdapterItem.PointItem && oldItem is PointsAdapterItem.PointItem) {
-            false
+            newItem.point.xText == oldItem.point.xText
+                    && newItem.point.yText == oldItem.point.yText
         } else {
             false
         }
@@ -34,7 +41,7 @@ class MyDiffUtil : DiffUtil.ItemCallback<PointsAdapterItem>() {
 }
 
 class PointsAdapter constructor() :
-    ListAdapter<PointsAdapterItem, RecyclerView.ViewHolder>(MyDiffUtil()) {
+    ListAdapter<PointsAdapterItem, RecyclerView.ViewHolder>(PointsAdapterItemDiffUtil()) {
 
     companion object {
         const val VIEW_TYPE_ITEM_POINT: Int = Int.MIN_VALUE

@@ -21,15 +21,18 @@ class RemoteGeoPointRepositoryImpl @Inject constructor(private val apiService: G
 //        )
 //    }
     override suspend fun getPointsPack(count: Int): PointsPack {
+        val list = apiService.getPoints(count = count)
+            .points.map {
+                Point(
+                    X(it.x),
+                    Y(it.y),
+                )
+            }
+            .sortedBy { it.x.value }
         return PointsPack(
-            list = apiService.getPoints(count = count)
-                .points.map {
-                    Point(
-                        X(it.x),
-                        Y(it.y),
-                    )
-                }
-                .sortedBy { it.x.value }
+            id = list.map { "${it.x.value}:${it.y.value}" }
+                .reduceRight { acc, item -> "$acc;$item" },
+            list = list
         )
     }
 }

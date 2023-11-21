@@ -101,7 +101,7 @@ class ChartView : LinearLayoutCompat {
 
     private var onPrintClickListener: OnPrintClickListener? = null
 
-    class ChartUiModel internal constructor(private val data: List<ChartPointUiModel>) : XYSeries {
+    class ChartUiModel internal constructor(val data: List<ChartPointUiModel>) : XYSeries {
 
         override fun size(): Int {
             return data.size

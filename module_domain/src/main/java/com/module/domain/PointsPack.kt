@@ -1,6 +1,7 @@
 package com.module.domain
 
 data class PointsPack(
+    val id: String,
     val list: List<Point>,
 )
 
