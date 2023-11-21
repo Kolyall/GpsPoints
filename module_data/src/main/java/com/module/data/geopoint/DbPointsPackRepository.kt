@@ -2,7 +2,7 @@ package com.module.data.geopoint
 
 import com.module.domain.PointsPack
 
-interface DbGeoPointRepository{
+interface DbPointsPackRepository{
     suspend fun storePointsPack(pointsPack: PointsPack)
-    suspend fun getList(): PointsPack
+    suspend fun getPointsPack(): PointsPack
 }

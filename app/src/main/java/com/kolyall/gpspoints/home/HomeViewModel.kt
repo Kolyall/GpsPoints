@@ -4,14 +4,14 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.core.presentation.fragment.BaseViewModel
-import com.module.domain.LoadAndSaveGeoPointListUseCase
+import com.module.domain.FetchPointsPackUseCase
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     application: Application,
-    private val loadAndSaveGeoPointListUseCase: LoadAndSaveGeoPointListUseCase
+    private val fetchPointsPackUseCase: FetchPointsPackUseCase
 ) : BaseViewModel(application) {
 
     fun loadPointList(
@@ -25,7 +25,7 @@ class HomeViewModel @Inject constructor(
         }
         viewModelScope.launch {
             try {
-                loadAndSaveGeoPointListUseCase(count = count)
+                fetchPointsPackUseCase(count = count)
                 onSuccess()
             } catch (exception: HttpException) {
                 Log.w(TAG, "loadPointList: ", exception)

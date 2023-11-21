@@ -1,8 +1,7 @@
 package com.module.db.di
 
-import com.module.data.geopoint.DbGeoPointRepository
-import com.module.data.geopoint.RemoteGeoPointRepository
-import com.module.db.repo.DbGeoPointRepositoryImpl
+import com.module.data.geopoint.DbPointsPackRepository
+import com.module.db.repo.DbPointsPackRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
@@ -12,7 +11,7 @@ abstract class DbModule {
 
     @Binds
     @Singleton
-    abstract fun bindsRemoteGeoPointRepository(
-        repository: DbGeoPointRepositoryImpl
-    ): DbGeoPointRepository
+    abstract fun bindsDbPointsPackRepository(
+        repository: DbPointsPackRepositoryImpl
+    ): DbPointsPackRepository
 }

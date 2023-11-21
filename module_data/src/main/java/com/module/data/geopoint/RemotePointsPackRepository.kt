@@ -2,6 +2,6 @@ package com.module.data.geopoint
 
 import com.module.domain.PointsPack
 
-interface RemoteGeoPointRepository{
+interface RemotePointsPackRepository{
     suspend fun getPointsPack(count: Int): PointsPack
 }

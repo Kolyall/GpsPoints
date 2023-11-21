@@ -8,7 +8,7 @@ import com.kolyall.gpspoints.results.adapter.PointsAdapterItem
 import com.kolyall.gpspoints.results.views.chart.ChartPointUiModel
 import com.kolyall.gpspoints.results.views.chart.ChartView
 import com.kolyall.gpspoints.results.views.point.PointUiModel
-import com.module.domain.GetPointListUseCase
+import com.module.domain.GetPointsPackUseCase
 import com.module.domain.Point
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 class PointsResultViewModel @Inject constructor(
     application: Application,
-    private val getPointListUseCase: GetPointListUseCase
+    private val getPointsPackUseCase: GetPointsPackUseCase
 ) : BaseViewModel(application) {
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
@@ -28,8 +28,8 @@ class PointsResultViewModel @Inject constructor(
 
         viewModelScope.launch {
             try {
-                val points = getPointListUseCase()
-                val pointUiModels = points.list.map {
+                val pointsPack = getPointsPackUseCase()
+                val pointUiModels = pointsPack.list.map {
                     it.toPointUiModel()
                 }
                 _uiState.value = UiState.Display(
@@ -43,9 +43,9 @@ class PointsResultViewModel @Inject constructor(
                         .apply {
                             add(
                                 PointsAdapterItem.Chart(
-                                    id = points.id,
+                                    id = pointsPack.id,
                                     chartUiModel = ChartView.ChartUiModel(
-                                        points.list.map {
+                                        pointsPack.list.map {
                                             it.toChartPointUiModel()
                                         }
                                     )

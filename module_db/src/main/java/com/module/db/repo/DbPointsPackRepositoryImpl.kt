@@ -1,17 +1,17 @@
 package com.module.db.repo
 
-import com.module.data.geopoint.DbGeoPointRepository
+import com.module.data.geopoint.DbPointsPackRepository
 import com.module.domain.PointsPack
 import javax.inject.Inject
 
-class DbGeoPointRepositoryImpl @Inject constructor() : DbGeoPointRepository {
+class DbPointsPackRepositoryImpl @Inject constructor() : DbPointsPackRepository {
 
     private var pointsPack: PointsPack? = null
     override suspend fun storePointsPack(pointsPack: PointsPack) {
         this.pointsPack = pointsPack
     }
 
-    override suspend fun getList(): PointsPack {
+    override suspend fun getPointsPack(): PointsPack {
         return pointsPack ?: throw RuntimeException("Not loaded!")
     }
 }

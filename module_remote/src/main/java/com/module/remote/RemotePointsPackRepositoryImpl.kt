@@ -1,6 +1,6 @@
 package com.module.remote
 
-import com.module.data.geopoint.RemoteGeoPointRepository
+import com.module.data.geopoint.RemotePointsPackRepository
 import com.module.domain.Point
 import com.module.domain.PointsPack
 import com.module.domain.X
@@ -8,8 +8,8 @@ import com.module.domain.Y
 import com.module.remote.api.geopoint.GeoPointApiService
 import javax.inject.Inject
 
-class RemoteGeoPointRepositoryImpl @Inject constructor(private val apiService: GeoPointApiService) :
-    RemoteGeoPointRepository {
+class RemotePointsPackRepositoryImpl @Inject constructor(private val apiService: GeoPointApiService) :
+    RemotePointsPackRepository {
     //    override suspend fun loadList(): Points {
 //        return Points(
 //            (0..100).map {

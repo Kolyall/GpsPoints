@@ -3,8 +3,8 @@ package com.module.remote.di
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.module.data.geopoint.RemoteGeoPointRepository
-import com.module.remote.RemoteGeoPointRepositoryImpl
+import com.module.data.geopoint.RemotePointsPackRepository
+import com.module.remote.RemotePointsPackRepositoryImpl
 import com.module.remote.api.geopoint.GeoPointApiService
 import dagger.Binds
 import dagger.Module
@@ -29,9 +29,9 @@ import javax.inject.Singleton
 abstract class RemoteRepositoryModule {
 
     @Binds
-    abstract fun bindsRemoteGeoPointRepository(
-        repository: RemoteGeoPointRepositoryImpl
-    ): RemoteGeoPointRepository
+    abstract fun bindsRemotePointsPackRepository(
+        repository: RemotePointsPackRepositoryImpl
+    ): RemotePointsPackRepository
 }
 
 @Module
