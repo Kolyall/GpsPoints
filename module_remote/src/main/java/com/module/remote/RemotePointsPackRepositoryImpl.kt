@@ -20,19 +20,13 @@ class RemotePointsPackRepositoryImpl @Inject constructor(private val apiService:
 //            }
 //        )
 //    }
-    override suspend fun getPointsPack(count: Int): PointsPack {
-        val list = apiService.getPoints(count = count)
+    override suspend fun getPoints(count: Int): List<Point> {
+        return apiService.getPoints(count = count)
             .points.map {
                 Point(
                     X(it.x),
                     Y(it.y),
                 )
             }
-            .sortedBy { it.x.value }
-        return PointsPack(
-            id = list.map { "${it.x.value}:${it.y.value}" }
-                .reduceRight { acc, item -> "$acc;$item" },
-            list = list
-        )
     }
 }

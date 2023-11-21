@@ -1,7 +1,7 @@
 package com.module.data.geopoint
 
-import com.module.domain.PointsPack
+import com.module.domain.Point
 
 interface RemotePointsPackRepository{
-    suspend fun getPointsPack(count: Int): PointsPack
+    suspend fun getPoints(count: Int): List<Point>
 }
